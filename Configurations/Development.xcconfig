@@ -1,0 +1,12 @@
+//
+//  Development.xcconfig
+//  MovieTime
+//
+//  Created by Ненад Љубиќ on 25.12.25.
+//
+
+
+// MARK: - App Identity
+PRODUCT_BUNDLE_IDENTIFIER = com.ljubikn.MovieTime.dev
+PRODUCT_NAME = MovieTimeDev
+INFOPLIST_KEY_CFBundleDisplayName = MovieTime Dev
