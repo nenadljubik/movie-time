@@ -1,0 +1,160 @@
+included:
+  - MovieTime
+
+excluded:
+  - Pods
+  - Carthage
+  - .build
+  - DerivedData
+  - "**/*.generated.swift"
+  - "**/*.pb.swift"
+
+# Opt-in rules for better code quality (~30 rules)
+opt_in_rules:
+  # Performance (4 rules)
+  - empty_count # Use .isEmpty instead of .count == 0
+  - first_where # Use .first(where:) instead of .filter{}.first
+  - contains_over_filter_count # Use .contains instead of .filter{}.count
+  - last_where # Use .last(where:) instead of .filter{}.last
+
+  # Code Quality (7 rules)
+  - fatal_error_message # Require messages in fatalError
+  - toggle_bool # Use .toggle() for booleans
+  - redundant_nil_coalescing # Simplify ?? nil patterns
+  - convenience_type # Use caseless enums for utility types
+  - identical_operands # Catch copy-paste errors (e.g., x == x)
+  - force_unwrapping # Warn on force unwrapping
+
+  # Complexity & Clean Code
+  - closure_body_length # Limit closure complexity
+  - function_default_parameter_at_end # Better function signatures
+  - no_empty_block # Avoid empty blocks
+  - unneeded_break_in_switch # Remove redundant breaks
+  - unused_closure_parameter # Catch unused parameters
+  - unused_enumerated # Avoid unnecessary enumerated()
+  - unused_optional_binding # Remove unused bindings
+  - redundant_type_annotation # Avoid redundant type annotations
+  - redundant_void_return # Clean function signatures
+  - unneeded_parentheses_in_closure_argument # Cleaner closures
+
+  # Clarity (5 rules)
+  - empty_string # Use .isEmpty instead of == ""
+  - joined_default_parameter # Use default separator in joined()
+  - closure_spacing # Consistent spacing in closures
+  - modifier_order # Consistent modifier ordering
+  - file_name # File names should match types
+
+  # Safety (3 rules)
+  - overridden_super_call # Ensure super is called when needed
+  - fallthrough # Avoid fallthrough in switch statements
+  - implicit_return # Allow implicit returns in closures
+
+  # SwiftUI Best Practices (2 rules)
+  - private_swiftui_state # Proper @State usage
+  - vertical_whitespace_closing_braces # Consistent formatting
+
+# Analyzer rules (run with swiftlint analyze --compiler-log-path <log>)
+analyzer_rules:
+  - unused_declaration
+  - unused_import
+
+
+# Type body length
+type_body_length:
+  warning: 250
+  error: 400
+
+# File length
+file_length:
+  warning: 400
+  error: 600
+  ignore_comment_only_lines: true
+
+# Function body length - Keep functions concise
+function_body_length:
+  warning: 40
+  error: 80
+
+# Closure body length - Limit closure complexity
+closure_body_length:
+  warning: 20
+  error: 40
+
+# Function parameter count - Avoid large function signatures
+function_parameter_count:
+  warning: 5
+  error: 8
+
+# Line length
+line_length:
+  warning: 120
+  error: 200
+  ignores_comments: true
+  ignores_urls: true
+
+# Type naming
+type_name:
+  min_length: 3
+  max_length:
+    warning: 40
+    error: 50
+  excluded:
+    - ID
+    - URL
+    - TV
+    - API
+
+# Identifier naming
+identifier_name:
+  min_length: 2
+  max_length:
+    warning: 40
+    error: 60
+  excluded:
+    - id
+    - url
+    - x
+    - y
+    - z
+    - i
+    - j
+    - k
+    - db
+
+# Cyclomatic complexity - Avoid overly complex code 
+cyclomatic_complexity:
+  warning: 10
+  error: 20
+  ignores_case_statements: true
+
+# Nesting
+nesting:
+  type_level:
+    warning: 2
+  function_level:
+    warning: 5
+
+# Large tuple
+large_tuple:
+  warning: 3
+  error: 4
+
+# Force unwrapping - warnings
+force_cast: warning
+force_try: warning
+
+# Reporter type (Xcode-friendly output)
+reporter: "xcode"
+
+# Custom rules
+custom_rules:
+  long_function_name:
+    name: "Long Function Name"
+    message: "Function names should not exceed 50 characters"
+    regex: 'func\s+[a-zA-Z_][a-zA-Z0-9_]{50,}\s*\('
+    severity: warning
+  very_long_function_name:
+    name: "Very Long Function Name"
+    message: "Function names should not exceed 70 characters (hard limit)"
+    regex: 'func\s+[a-zA-Z_][a-zA-Z0-9_]{70,}\s*\('
+    severity: error
