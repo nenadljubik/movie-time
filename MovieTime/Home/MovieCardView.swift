@@ -13,60 +13,57 @@ struct MovieCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            imageView
+            posterImage
+            movieInfo
+        }
+    }
+
+    private var posterImage: some View {
+        imageView
             .aspectRatio(2/3, contentMode: .fit)
             .cornerRadius(12)
             .clipped()
             .shadow(color: .black.opacity(0.4), radius: 8, x: 0, y: 4)
+    }
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(movie.title ?? "Untitled")
-                    .font(.headline)
-                    .lineLimit(1)
-                    .foregroundColor(.white)
+    private var movieInfo: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(movie.title ?? "Untitled")
+                .font(.headline)
+                .lineLimit(1)
+                .foregroundColor(.white)
 
-                HStack(spacing: 4) {
-                    Image(systemName: "star.fill")
-                        .font(.caption)
-                        .foregroundColor(.accentRed)
-                    Text(String(format: "%.1f", movie.voteAverage ?? 0.0))
-                        .font(.caption)
-                        .foregroundColor(.white.opacity(0.8))
-                }
-
-                Text(movie.overview ?? "")
+            HStack(spacing: 4) {
+                Image(systemName: "star.fill")
                     .font(.caption)
-                    .foregroundColor(.white.opacity(0.6))
-                    .lineLimit(2)
+                    .foregroundColor(.accentRed)
+                Text(String(format: "%.1f", movie.voteAverage ?? 0.0))
+                    .font(.caption)
+                    .foregroundColor(.white.opacity(0.8))
             }
+
+            Text(movie.overview ?? "")
+                .font(.caption)
+                .foregroundColor(.white.opacity(0.6))
+                .lineLimit(2)
         }
     }
 
     var imageView: some View {
-        AsyncImage(url: movie.posterURL) { phase in
-            switch phase {
-            case .empty:
-                Rectangle()
-                    .fill(Color.cardBackground)
-                    .overlay(
-                        ProgressView()
-                            .tint(.white)
-                    )
-            case .success(let image):
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            case .failure:
-                Rectangle()
-                    .fill(Color.cardBackground)
-                    .overlay(
-                        Image(systemName: "film")
-                            .font(.largeTitle)
-                            .foregroundColor(.gray)
-                    )
-            @unknown default:
-                EmptyView()
-            }
+        CachedAsyncImage(
+            url: movie.posterURL,
+            lowResURL: movie.posterLowResURL
+        ) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        } placeholder: {
+            Rectangle()
+                .fill(Color.cardBackground)
+                .overlay(
+                    ProgressView()
+                        .tint(.white)
+                )
         }
     }
 }
