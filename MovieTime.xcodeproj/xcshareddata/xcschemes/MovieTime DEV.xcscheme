@@ -50,6 +50,13 @@
             ReferencedContainer = "container:MovieTime.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "TMDB_ACCESS_TOKEN"
+            value = "$(TMDB_ACCESS_TOKEN)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Development Release"

@@ -6,8 +6,28 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5553CD7B2F002136002F36EC /* TMDBKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5553CD792F002127002F36EC /* TMDBKit.xcframework */; };
+		5553CD7C2F002136002F36EC /* TMDBKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5553CD792F002127002F36EC /* TMDBKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5553CD7D2F002136002F36EC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5553CD7C2F002136002F36EC /* TMDBKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		551F1A362EFD907E005053E3 /* MovieTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5553CD792F002127002F36EC /* TMDBKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMDBKit.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -28,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5553CD7B2F002136002F36EC /* TMDBKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +60,7 @@
 			children = (
 				55DF8A272EFDFC9D007D5FD1 /* Configurations */,
 				551F1A382EFD907E005053E3 /* MovieTime */,
+				5553CD792F002127002F36EC /* TMDBKit.xcframework */,
 				551F1A372EFD907E005053E3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +83,7 @@
 				551F1A322EFD907E005053E3 /* Sources */,
 				551F1A332EFD907E005053E3 /* Frameworks */,
 				551F1A342EFD907E005053E3 /* Resources */,
+				5553CD7D2F002136002F36EC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
