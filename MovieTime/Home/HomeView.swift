@@ -31,20 +31,42 @@ struct HomeView: View {
             Color.appBackground
                 .ignoresSafeArea()
 
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach([Movie.dummy(), Movie.dummy(id: 2),
-                             Movie.dummy(id: 3),
-                             Movie.dummy(id: 4),
-                             Movie.dummy(id: 5)]) { movie in
-                        MovieCardView(movie: movie)
-                    }
-                }
-                .padding()
-            }
+            gridView
         }
         .navigationTitle("Trending Movies")
         .navigationBarTitleDisplayMode(.large)
+        .task {
+            if viewModel.movies.isEmpty {
+                await viewModel.loadTrendingMovies()
+            }
+        }
+    }
+
+    var gridView: some View {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(viewModel.movies) { movie in
+                    MovieCardView(movie: movie)
+                        .onAppear {
+                            Task {
+                                await viewModel.loadMoreIfNeeded(currentItem: movie)
+                            }
+                        }
+                }
+
+                if viewModel.isLoading {
+                    ProgressView()
+                        .tint(.accentRed)
+                        .frame(maxWidth: .infinity)
+                        .gridCellColumns(columns.count)
+                        .padding()
+                }
+            }
+            .padding()
+        }
+        .refreshable {
+            await viewModel.refresh()
+        }
     }
 }
 
