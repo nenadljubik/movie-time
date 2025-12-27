@@ -12,11 +12,24 @@ import TMDBKit
 struct MovieTimeApp: App {
     init() {
         TMDBConfiguration.configure(accessToken: AppConfiguration.tmdbAccessToken)
+
+        configureNavigationBar()
     }
 
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .preferredColorScheme(.light)
         }
+    }
+
+    private func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.accentRed)]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 }

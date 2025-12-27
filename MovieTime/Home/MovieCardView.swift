@@ -22,7 +22,7 @@ struct MovieCardView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(movie.title ?? "Untitled")
                     .font(.headline)
-                    .lineLimit(2)
+                    .lineLimit(1)
                     .foregroundColor(.white)
 
                 HStack(spacing: 4) {
@@ -37,7 +37,7 @@ struct MovieCardView: View {
                 Text(movie.overview ?? "")
                     .font(.caption)
                     .foregroundColor(.white.opacity(0.6))
-                    .lineLimit(3)
+                    .lineLimit(2)
             }
         }
     }
