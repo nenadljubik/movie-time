@@ -23,6 +23,13 @@ struct MainTabView: View {
             .tabItem {
                 Label("Search", systemImage: "magnifyingglass")
             }
+
+            NavigationStack {
+                FavoritesView()
+            }
+            .tabItem {
+                Label("Favorites", systemImage: "heart.fill")
+            }
         }
         .tint(.accentRed)
     }

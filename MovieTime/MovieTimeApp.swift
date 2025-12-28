@@ -22,7 +22,7 @@ struct MovieTimeApp: App {
             MainTabView()
                 .preferredColorScheme(.light)
         }
-        .modelContainer(for: CachedMovie.self)
+        .modelContainer(for: [CachedMovie.self, FavoriteMovie.self])
     }
 
     private func configureNavigationBar() {
