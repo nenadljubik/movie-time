@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5553CD7B2F002136002F36EC /* TMDBKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5553CD792F002127002F36EC /* TMDBKit.xcframework */; };
-		5553CD7C2F002136002F36EC /* TMDBKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5553CD792F002127002F36EC /* TMDBKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55DC3FDA2F0144EB00C0E9C7 /* TMDBKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DC3FD82F0144DD00C0E9C7 /* TMDBKit.xcframework */; };
+		55DC3FDB2F0144EB00C0E9C7 /* TMDBKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55DC3FD82F0144DD00C0E9C7 /* TMDBKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,7 +18,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5553CD7C2F002136002F36EC /* TMDBKit.xcframework in Embed Frameworks */,
+				55DC3FDB2F0144EB00C0E9C7 /* TMDBKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -27,12 +27,25 @@
 
 /* Begin PBXFileReference section */
 		551F1A362EFD907E005053E3 /* MovieTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5553CD792F002127002F36EC /* TMDBKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMDBKit.xcframework; sourceTree = "<group>"; };
+		55DC3FD82F0144DD00C0E9C7 /* TMDBKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMDBKit.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		556AF0472F005FE700717C58 /* Exceptions for "MovieTime" folder in "MovieTime" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 551F1A352EFD907E005053E3 /* MovieTime */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		551F1A382EFD907E005053E3 /* MovieTime */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				556AF0472F005FE700717C58 /* Exceptions for "MovieTime" folder in "MovieTime" target */,
+			);
 			path = MovieTime;
 			sourceTree = "<group>";
 		};
@@ -48,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5553CD7B2F002136002F36EC /* TMDBKit.xcframework in Frameworks */,
+				55DC3FDA2F0144EB00C0E9C7 /* TMDBKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,9 +71,9 @@
 		551F1A2D2EFD907E005053E3 = {
 			isa = PBXGroup;
 			children = (
-				55DF8A272EFDFC9D007D5FD1 /* Configurations */,
 				551F1A382EFD907E005053E3 /* MovieTime */,
-				5553CD792F002127002F36EC /* TMDBKit.xcframework */,
+				55DF8A272EFDFC9D007D5FD1 /* Configurations */,
+				55DC3FD82F0144DD00C0E9C7 /* TMDBKit.xcframework */,
 				551F1A372EFD907E005053E3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -299,6 +312,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieTime/Info.plist;
+				INFOPLIST_KEY_TMDB_ACCESS_TOKEN = "$(TMDB_ACCESS_TOKEN)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -310,6 +325,10 @@
 				);
 				MARKETING_VERSION = 1.0;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -329,6 +348,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieTime/Info.plist;
+				INFOPLIST_KEY_TMDB_ACCESS_TOKEN = "$(TMDB_ACCESS_TOKEN)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -340,6 +361,10 @@
 				);
 				MARKETING_VERSION = 1.0;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -424,6 +449,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieTime/Info.plist;
+				INFOPLIST_KEY_TMDB_ACCESS_TOKEN = "$(TMDB_ACCESS_TOKEN)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -435,6 +462,10 @@
 				);
 				MARKETING_VERSION = 1.0;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -512,6 +543,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieTime/Info.plist;
+				INFOPLIST_KEY_TMDB_ACCESS_TOKEN = "$(TMDB_ACCESS_TOKEN)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -523,6 +556,10 @@
 				);
 				MARKETING_VERSION = 1.0;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
