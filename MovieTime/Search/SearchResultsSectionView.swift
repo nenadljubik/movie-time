@@ -12,7 +12,7 @@ struct SearchResultsSectionView: View {
     let searchQuery: String
     let searchType: SearchType
     let isLoading: Bool
-    let searchResults: [Movie]
+    let searchResults: [SearchResultItem]
     let columns: [GridItem]
 
     private var currentState: SearchState {
@@ -30,10 +30,10 @@ struct SearchResultsSectionView: View {
     var body: some View {
         ScrollView {
             switch currentState {
-            case .results(let movies):
+            case .results(let items):
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(movies) { movie in
-                        MovieCardView(movie: movie)
+                    ForEach(items) { item in
+                        SearchResultCardView(item: item)
                     }
                 }
             default:

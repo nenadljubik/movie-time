@@ -11,7 +11,7 @@ enum SearchState {
     case empty(searchType: SearchType)
     case searching
     case noResults
-    case results([Movie])
+    case results([SearchResultItem])
 
     var stateViewConfig: SearchStateViewConfig? {
         switch self {

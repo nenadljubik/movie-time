@@ -14,12 +14,14 @@ import TMDBKit
 final class SearchViewModel: ObservableObject {
     @Published var searchQuery: String = ""
     @Published var searchType: SearchType = .movies
-    @Published var searchResults: [Movie] = [.dummy(), .dummy(), .dummy(), .dummy()]
+    @Published var searchResults: [SearchResultItem] = []
     @Published var isLoading = false
 
+    private let searchService: TMDBSearchService
     private var cancellables = Set<AnyCancellable>()
 
-    init() {
+    init(searchService: TMDBSearchService = TMDBSearchService()) {
+        self.searchService = searchService
         setupSearchThrottling()
     }
 
@@ -30,16 +32,66 @@ final class SearchViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] query in
-                // TODO: Implement actual API search based on searchType
+                self?.handleSearch(keyword: query)
             }
             .store(in: &cancellables)
+    }
 
+    private func searchMovies(keyword: String) {
+        Task {
+            isLoading = true
+            do {
+                let searchResponse = try await searchService.searchMovies(with: keyword)
 
-        $searchType
-            .dropFirst() // Skip initial value
-            .sink { [weak self] _ in
-                // TODO: Implement actual API search based on searchType
+                guard let movies = searchResponse.results else {
+                    isLoading = false
+                    return
+                }
+
+                withAnimation {
+                    searchResults = movies.map { .movie($0) }
+                    isLoading = false
+                }
+            } catch {
+                print(error)
+                isLoading = false
             }
-            .store(in: &cancellables)
+        }
+    }
+
+    private func handleSearch(keyword: String) {
+        guard !keyword.isEmpty else {
+            searchResults = []
+            return
+        }
+
+        switch searchType {
+        case .movies:
+            searchMovies(keyword: keyword)
+        case .tvShows:
+            searchTVShows(keyword: keyword)
+        }
+    }
+
+    private func searchTVShows(keyword: String) {
+        Task {
+            isLoading = true
+            do {
+                let searchResponse = try await searchService.searchTvShows(with: keyword)
+
+                guard let tvShows = searchResponse.results else {
+                    isLoading = false
+                    return
+                }
+
+                withAnimation {
+                    searchResults = tvShows.map { .tvShow($0) }
+                    isLoading = false
+                }
+            } catch {
+                print(error)
+                isLoading = false
+            }
+        }
     }
 }
