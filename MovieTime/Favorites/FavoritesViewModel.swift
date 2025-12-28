@@ -15,7 +15,7 @@ final class FavoritesViewModel: ObservableObject {
     @Published var favoriteMovies: [Movie] = []
     @Published var isLoading = false
 
-    private var favoritesManager: FavoritesManager?
+    private var favoritesManager: FavoritesManagerProtocol?
 
     func configure(with modelContext: ModelContext) {
         self.favoritesManager = FavoritesManager(modelContext: modelContext)

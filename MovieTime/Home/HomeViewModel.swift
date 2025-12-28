@@ -18,10 +18,10 @@ final class HomeViewModel: ObservableObject {
     @Published var hasMorePages = true
 
     private var currentPage = 1
-    private let movieService: TMDBMoviesService
+    private let movieService: TMDBMoviesServiceProtocol
     private var cacheManager: SwiftDataManager<CachedMovie>?
 
-    init(movieService: TMDBMoviesService = TMDBMoviesService()) {
+    init(movieService: TMDBMoviesServiceProtocol = TMDBMoviesService()) {
         self.movieService = movieService
     }
 
