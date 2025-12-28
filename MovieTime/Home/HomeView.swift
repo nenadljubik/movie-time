@@ -37,6 +37,9 @@ struct HomeView: View {
         }
         .navigationTitle("Trending Movies")
         .navigationBarTitleDisplayMode(.large)
+        .navigationDestination(for: Movie.self) { movie in
+            MovieDetailView(movie: movie)
+        }
         .onAppear {
             viewModel.configure(with: modelContext)
         }
@@ -50,27 +53,38 @@ struct HomeView: View {
     var gridView: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(viewModel.movies) { movie in
-                    MovieCardView(movie: movie)
-                        .onAppear {
-                            Task {
-                                await viewModel.loadMoreIfNeeded(currentItem: movie)
-                            }
-                        }
-                }
-
-                if viewModel.isLoading {
-                    ProgressView()
-                        .tint(.accentRed)
-                        .frame(maxWidth: .infinity)
-                        .gridCellColumns(columns.count)
-                        .padding()
-                }
+                moviesList
+                loadingIndicator
             }
             .padding()
         }
         .refreshable {
             await viewModel.refresh()
+        }
+    }
+
+    private var moviesList: some View {
+        ForEach(viewModel.movies) { movie in
+            NavigationLink(value: movie) {
+                MovieCardView(movie: movie)
+            }
+            .buttonStyle(.plain)
+            .onAppear {
+                Task {
+                    await viewModel.loadMoreIfNeeded(currentItem: movie)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var loadingIndicator: some View {
+        if viewModel.isLoading {
+            ProgressView()
+                .tint(.accentRed)
+                .frame(maxWidth: .infinity)
+                .gridCellColumns(columns.count)
+                .padding()
         }
     }
 }

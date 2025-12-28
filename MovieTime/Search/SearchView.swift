@@ -58,6 +58,14 @@ struct SearchView: View {
             }
             .padding()
         }
+        .navigationDestination(for: SearchResultItem.self) { item in
+            switch item {
+            case .movie(let movie):
+                MovieDetailView(movie: movie)
+            case .tvShow:
+                Text("TV Show details coming soon")
+            }
+        }
     }
 }
 

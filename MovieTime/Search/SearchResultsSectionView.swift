@@ -33,7 +33,10 @@ struct SearchResultsSectionView: View {
             case .results(let items):
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(items) { item in
-                        SearchResultCardView(item: item)
+                        NavigationLink(value: item) {
+                            SearchResultCardView(item: item)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             default:
