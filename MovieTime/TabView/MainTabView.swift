@@ -16,6 +16,13 @@ struct MainTabView: View {
             .tabItem {
                 Label("Home", systemImage: "film.stack")
             }
+
+            NavigationStack {
+                SearchView()
+            }
+            .tabItem {
+                Label("Search", systemImage: "magnifyingglass")
+            }
         }
         .tint(.accentRed)
     }
