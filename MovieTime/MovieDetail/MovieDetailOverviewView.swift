@@ -15,25 +15,11 @@ struct MovieDetailOverviewView: View {
             if let overview = overview, !overview.isEmpty {
                 MovieDetailSectionTitle(title: "Overview")
 
-                overviewText(overview)
+                Text(overview)
+                    .font(.body)
+                    .foregroundColor(.white.opacity(0.9))
             }
         }
         .padding(.horizontal)
-    }
-
-    @ViewBuilder
-    private func overviewText(_ text: String) -> some View {
-        if #available(iOS 16.0, *) {
-            Text(text)
-                .font(.body)
-                .foregroundColor(.white.opacity(0.9))
-                .lineSpacing(4)
-                .scrollDismissesKeyboard(.immediately)
-        } else {
-            Text(text)
-                .font(.body)
-                .foregroundColor(.white.opacity(0.9))
-                .lineSpacing(4)
-        }
     }
 }
