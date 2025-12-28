@@ -14,7 +14,7 @@ import TMDBKit
 final class MovieDetailViewModel: ObservableObject {
     @Published var isFavorited = false
 
-    private var favoritesManager: FavoritesManager?
+    private var favoritesManager: FavoritesManagerProtocol?
 
     func configure(with modelContext: ModelContext) {
         self.favoritesManager = FavoritesManager(modelContext: modelContext)

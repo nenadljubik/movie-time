@@ -10,7 +10,7 @@ import SwiftData
 import TMDBKit
 
 @MainActor
-final class FavoritesManager {
+final class FavoritesManager: FavoritesManagerProtocol {
     private let dataManager: SwiftDataManager<FavoriteMovie>
 
     init(modelContext: ModelContext) {
