@@ -8,9 +8,17 @@
 import Foundation
 import TMDBKit
 
-enum SearchResultItem: Identifiable {
+enum SearchResultItem: Identifiable, Hashable {
     case movie(Movie)
     case tvShow(TVShow)
+
+    static func == (lhs: SearchResultItem, rhs: SearchResultItem) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 
     var id: Int {
         switch self {
