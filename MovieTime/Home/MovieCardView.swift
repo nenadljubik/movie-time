@@ -33,15 +33,6 @@ struct MovieCardView: View {
                 .lineLimit(1)
                 .foregroundColor(.white)
 
-            HStack(spacing: 4) {
-                Image(systemName: "star.fill")
-                    .font(.caption)
-                    .foregroundColor(.accentRed)
-                Text(String(format: "%.1f", movie.voteAverage ?? 0.0))
-                    .font(.caption)
-                    .foregroundColor(.white.opacity(0.8))
-            }
-
             Text(movie.overview ?? "")
                 .font(.caption)
                 .foregroundColor(.white.opacity(0.6))

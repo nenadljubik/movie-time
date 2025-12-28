@@ -49,7 +49,9 @@ final class HomeViewModel: ObservableObject {
             }
 
             // Step 3: We're checking if we're on the first page which means first time entering the screen
-            if currentPage == 1 {  // If it's first page, we're storing the new data in cache and replacing the cashed data that was previously presented
+            if currentPage == 1 {
+                // If it's first page, we're storing the new data in cache and replacing the cached data
+                // that was previously presented
                 saveToCache(results)
                 movies = results
             } else {
@@ -73,20 +75,20 @@ final class HomeViewModel: ObservableObject {
 
     private func loadFromCache() -> [Movie]? {
         guard let cacheManager = cacheManager else { return nil }
-        
+
         guard let cachedMovies = try? cacheManager.fetchAll(
             sortBy: [SortDescriptor(\.popularity, order: .reverse)]
         ) else {
             return nil
         }
-        
+
         let movies = cachedMovies.map { $0.toMovie() }
         return movies.isEmpty ? nil : movies
     }
 
     private func saveToCache(_ movies: [Movie]) {
         guard let cacheManager = cacheManager else { return }
-        
+
         // We're clearing the previously cached movies
         try? cacheManager.deleteAll()
 
