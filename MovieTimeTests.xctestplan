@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "1CD0D504-CCC5-469A-9CDA-BA8B4A933126",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "TMDB_ACCESS_TOKEN",
+        "value" : "$(TMDB_ACCESS_TOKEN)"
+      }
+    ],
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MovieTime.xcodeproj",
+      "identifier" : "551F1A352EFD907E005053E3",
+      "name" : "MovieTime"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MovieTime.xcodeproj",
+        "identifier" : "55A13D802F01A98200C46122",
+        "name" : "MovieTimeTests"
+      }
+    }
+  ],
+  "version" : 1
+}
