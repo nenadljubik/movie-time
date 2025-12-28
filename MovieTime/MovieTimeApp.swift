@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import TMDBKit
 
 @main
@@ -21,6 +22,7 @@ struct MovieTimeApp: App {
             MainTabView()
                 .preferredColorScheme(.light)
         }
+        .modelContainer(for: CachedMovie.self)
     }
 
     private func configureNavigationBar() {

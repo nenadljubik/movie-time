@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 import TMDBKit
 import SwiftUI
 import Combine
@@ -18,9 +19,14 @@ final class HomeViewModel: ObservableObject {
 
     private var currentPage = 1
     private let movieService: TMDBMoviesService
+    private var cacheManager: SwiftDataManager<CachedMovie>?
 
     init(movieService: TMDBMoviesService = TMDBMoviesService()) {
         self.movieService = movieService
+    }
+
+    func configure(with modelContext: ModelContext) {
+        self.cacheManager = SwiftDataManager<CachedMovie>(modelContext: modelContext)
     }
 
     func loadTrendingMovies() async {
@@ -28,6 +34,12 @@ final class HomeViewModel: ObservableObject {
 
         isLoading = true
 
+        // Step 1: First thing first, we're loading from cach. If there is anything cached, we show it to the user
+        if currentPage == 1, let cachedMovies = loadFromCache() {
+            movies = cachedMovies
+        }
+
+        // Step 2: Proceeding with fetching new data
         do {
             let response = try await movieService.fetchTrendingMovies(page: currentPage)
 
@@ -36,7 +48,13 @@ final class HomeViewModel: ObservableObject {
                 return
             }
 
-            movies.append(contentsOf: results)
+            // Step 3: We're checking if we're on the first page which means first time entering the screen
+            if currentPage == 1 {  // If it's first page, we're storing the new data in cache and replacing the cashed data that was previously presented
+                saveToCache(results)
+                movies = results
+            } else {
+                movies.append(contentsOf: results)  // Otherwise we just append the fresh data to the previous one
+            }
 
             if let totalPages = response.totalPages {
                 hasMorePages = currentPage < totalPages
@@ -45,8 +63,36 @@ final class HomeViewModel: ObservableObject {
             currentPage += 1
             isLoading = false
         } catch {
+            // If API fails and we have cached data, use it
+            if currentPage == 1 && !movies.isEmpty {
+                print("Using cached data due to network error")
+            }
             isLoading = false
         }
+    }
+
+    private func loadFromCache() -> [Movie]? {
+        guard let cacheManager = cacheManager else { return nil }
+        
+        guard let cachedMovies = try? cacheManager.fetchAll(
+            sortBy: [SortDescriptor(\.popularity, order: .reverse)]
+        ) else {
+            return nil
+        }
+        
+        let movies = cachedMovies.map { $0.toMovie() }
+        return movies.isEmpty ? nil : movies
+    }
+
+    private func saveToCache(_ movies: [Movie]) {
+        guard let cacheManager = cacheManager else { return }
+        
+        // We're clearing the previously cached movies
+        try? cacheManager.deleteAll()
+
+        // After that, we're storing the new data
+        let cachedMovies = movies.map { CachedMovie(from: $0) }
+        try? cacheManager.save(cachedMovies)
     }
 
     func loadMoreIfNeeded(currentItem movie: Movie) async {

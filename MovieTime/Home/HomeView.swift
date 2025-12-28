@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 import TMDBKit
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
 
@@ -35,6 +37,9 @@ struct HomeView: View {
         }
         .navigationTitle("Trending Movies")
         .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            viewModel.configure(with: modelContext)
+        }
         .task {
             if viewModel.movies.isEmpty {
                 await viewModel.loadTrendingMovies()

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55613DE92F003ADC00E748F5 /* TMDBKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55613DE82F003ADC00E748F5 /* TMDBKit.xcframework */; };
-		55613DEA2F003ADC00E748F6 /* TMDBKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55613DE82F003ADC00E748F5 /* TMDBKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55DC3FDA2F0144EB00C0E9C7 /* TMDBKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DC3FD82F0144DD00C0E9C7 /* TMDBKit.xcframework */; };
+		55DC3FDB2F0144EB00C0E9C7 /* TMDBKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55DC3FD82F0144DD00C0E9C7 /* TMDBKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,7 +18,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				55613DEA2F003ADC00E748F6 /* TMDBKit.xcframework in Embed Frameworks */,
+				55DC3FDB2F0144EB00C0E9C7 /* TMDBKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -27,7 +27,7 @@
 
 /* Begin PBXFileReference section */
 		551F1A362EFD907E005053E3 /* MovieTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		55613DE82F003ADC00E748F5 /* TMDBKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMDBKit.xcframework; sourceTree = "<group>"; };
+		55DC3FD82F0144DD00C0E9C7 /* TMDBKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMDBKit.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -61,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55613DE92F003ADC00E748F5 /* TMDBKit.xcframework in Frameworks */,
+				55DC3FDA2F0144EB00C0E9C7 /* TMDBKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +73,7 @@
 			children = (
 				551F1A382EFD907E005053E3 /* MovieTime */,
 				55DF8A272EFDFC9D007D5FD1 /* Configurations */,
-				55613DE82F003ADC00E748F5 /* TMDBKit.xcframework */,
+				55DC3FD82F0144DD00C0E9C7 /* TMDBKit.xcframework */,
 				551F1A372EFD907E005053E3 /* Products */,
 			);
 			sourceTree = "<group>";
