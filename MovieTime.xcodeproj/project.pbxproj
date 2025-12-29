@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55EC2D302F021C9200199320 /* TMDBKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC2D2E2F021C8800199320 /* TMDBKit.xcframework */; };
-		55EC2D312F021C9200199320 /* TMDBKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC2D2E2F021C8800199320 /* TMDBKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55EC2D772F02203100199320 /* TMDBKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC2D752F02202500199320 /* TMDBKit.xcframework */; };
+		55EC2D782F02203100199320 /* TMDBKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC2D752F02202500199320 /* TMDBKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +35,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				55EC2D312F021C9200199320 /* TMDBKit.xcframework in Embed Frameworks */,
+				55EC2D782F02203100199320 /* TMDBKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,7 +46,7 @@
 		5513767D2F02105100302339 /* MovieTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		551F1A362EFD907E005053E3 /* MovieTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A13D812F01A98200C46122 /* MovieTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		55EC2D2E2F021C8800199320 /* TMDBKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMDBKit.xcframework; sourceTree = "<group>"; };
+		55EC2D752F02202500199320 /* TMDBKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMDBKit.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -97,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55EC2D302F021C9200199320 /* TMDBKit.xcframework in Frameworks */,
+				55EC2D772F02203100199320 /* TMDBKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +114,7 @@
 		551F1A2D2EFD907E005053E3 = {
 			isa = PBXGroup;
 			children = (
-				55EC2D2E2F021C8800199320 /* TMDBKit.xcframework */,
+				55EC2D752F02202500199320 /* TMDBKit.xcframework */,
 				551F1A382EFD907E005053E3 /* MovieTime */,
 				55DF8A272EFDFC9D007D5FD1 /* Configurations */,
 				55A13D822F01A98200C46122 /* MovieTimeTests */,
