@@ -76,7 +76,7 @@ enum AppAlert: LocalizedError, Identifiable {
             return nil // No secondary action for info alerts
         }
     }
-    
+
     var isDestructive: Bool {
         switch self {
         case .confirmation(_, _, _, _, _, _, let isDestructive):

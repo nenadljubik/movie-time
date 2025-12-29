@@ -17,11 +17,14 @@ extension View {
                 set: { if !$0 { error.wrappedValue = nil } }
             )
         ) {
-            Button(error.wrappedValue?.primaryButtonTitle ?? "OK", role: error.wrappedValue?.isDestructive ?? false ? .destructive : nil) {
+            Button(
+                error.wrappedValue?.primaryButtonTitle ?? "OK",
+                role: error.wrappedValue?.isDestructive ?? false ? .destructive : nil
+            ) {
                 error.wrappedValue?.primaryAction?()
                 error.wrappedValue = nil
             }
-            
+
             if let secondaryTitle = error.wrappedValue?.secondaryButtonTitle,
                let secondaryAction = error.wrappedValue?.secondaryAction {
                 Button(secondaryTitle, role: .cancel, action: secondaryAction)

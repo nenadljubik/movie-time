@@ -54,10 +54,7 @@ final class SearchViewModel: ObservableObject {
                     isLoading = false
                 }
             } catch {
-                appAlert = .info(title: error.localizedDescription,
-                                 message: nil,
-                                 dismissTitle: "OK",
-                                 dismissAction: {})
+                appAlert = .info(title: error.localizedDescription, message: nil)
                 isLoading = false
             }
         }
@@ -93,10 +90,7 @@ final class SearchViewModel: ObservableObject {
                     isLoading = false
                 }
             } catch {
-                appAlert = .info(title: error.localizedDescription,
-                                 message: nil,
-                                 dismissTitle: "OK",
-                                 dismissAction: {})
+                appAlert = .info(title: error.localizedDescription, message: nil)
                 isLoading = false
             }
         }

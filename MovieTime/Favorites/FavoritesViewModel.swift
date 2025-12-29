@@ -31,10 +31,7 @@ final class FavoritesViewModel: ObservableObject {
             favoriteMovies = favorites.map { $0.toMovie() }
             isLoading = false
         } catch {
-            appAlert = .info(title: error.localizedDescription,
-                             message: nil,
-                             dismissTitle: "OK",
-                             dismissAction: {})
+            appAlert = .info(title: error.localizedDescription, message: nil)
             isLoading = false
         }
     }

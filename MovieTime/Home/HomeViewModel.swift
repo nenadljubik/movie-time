@@ -67,7 +67,7 @@ final class HomeViewModel: ObservableObject {
             isLoading = false
         } catch {
             isLoading = false
-            appAlert = .info(title: error.localizedDescription, message: nil, dismissTitle: "OK", dismissAction: {})
+            appAlert = .info(title: error.localizedDescription, message: nil)
         }
     }
 
