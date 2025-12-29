@@ -53,5 +53,6 @@ struct MovieDetailView: View {
                 .foregroundColor(viewModel.isFavorited ? .accentRed : .accentRed)
                 .symbolEffect(.bounce, value: viewModel.isFavorited)
         }
+        .accessibilityIdentifier("FavoriteButton")
     }
 }

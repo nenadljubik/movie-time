@@ -89,6 +89,7 @@ struct FavoritesView: View {
                         MovieCardView(movie: movie)
                     }
                     .buttonStyle(.plain)
+                    .accessibilityIdentifier("MovieCard")
                 }
             }
             .padding()

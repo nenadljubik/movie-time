@@ -24,6 +24,13 @@
   },
   "testTargets" : [
     {
+      "target" : {
+        "containerPath" : "container:MovieTime.xcodeproj",
+        "identifier" : "5513767C2F02105100302339",
+        "name" : "MovieTimeUITests"
+      }
+    },
+    {
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:MovieTime.xcodeproj",

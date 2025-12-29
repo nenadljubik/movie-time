@@ -58,6 +58,7 @@ struct HomeView: View {
             }
             .padding()
         }
+        .accessibilityIdentifier("HomeMoviesGrid")
         .refreshable {
             await viewModel.refresh()
         }
@@ -69,6 +70,7 @@ struct HomeView: View {
                 MovieCardView(movie: movie)
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier("MovieCard")
             .onAppear {
                 Task {
                     await viewModel.loadMoreIfNeeded(currentItem: movie)
@@ -85,6 +87,7 @@ struct HomeView: View {
                 .frame(maxWidth: .infinity)
                 .gridCellColumns(columns.count)
                 .padding()
+                .accessibilityIdentifier("LoadingIndicator")
         }
     }
 }

@@ -30,6 +30,7 @@ struct MainTabView: View {
             .tabItem {
                 Label("Favorites", systemImage: "heart.fill")
             }
+            .accessibilityIdentifier("FavoritesTab")
         }
         .tint(.accentRed)
     }
