@@ -16,6 +16,7 @@ final class HomeViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     @Published var isLoading = false
     @Published var hasMorePages = true
+    @Published var appAlert: AppAlert?
 
     private var currentPage = 1
     private let movieService: TMDBMoviesServiceProtocol
@@ -65,11 +66,8 @@ final class HomeViewModel: ObservableObject {
             currentPage += 1
             isLoading = false
         } catch {
-            // If API fails and we have cached data, use it
-            if currentPage == 1 && !movies.isEmpty {
-                print("Using cached data due to network error")
-            }
             isLoading = false
+            appAlert = .info(title: error.localizedDescription, message: nil, dismissTitle: "OK", dismissAction: {})
         }
     }
 

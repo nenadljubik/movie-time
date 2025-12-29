@@ -16,6 +16,7 @@ final class SearchViewModel: ObservableObject {
     @Published var searchType: SearchType = .movies
     @Published var searchResults: [SearchResultItem] = []
     @Published var isLoading = false
+    @Published var appAlert: AppAlert?
 
     private let searchService: TMDBSearchService
     private var cancellables = Set<AnyCancellable>()
@@ -53,7 +54,10 @@ final class SearchViewModel: ObservableObject {
                     isLoading = false
                 }
             } catch {
-                print(error)
+                appAlert = .info(title: error.localizedDescription,
+                                 message: nil,
+                                 dismissTitle: "OK",
+                                 dismissAction: {})
                 isLoading = false
             }
         }
@@ -89,7 +93,10 @@ final class SearchViewModel: ObservableObject {
                     isLoading = false
                 }
             } catch {
-                print(error)
+                appAlert = .info(title: error.localizedDescription,
+                                 message: nil,
+                                 dismissTitle: "OK",
+                                 dismissAction: {})
                 isLoading = false
             }
         }

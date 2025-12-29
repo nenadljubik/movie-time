@@ -14,6 +14,7 @@ import TMDBKit
 final class FavoritesViewModel: ObservableObject {
     @Published var favoriteMovies: [Movie] = []
     @Published var isLoading = false
+    @Published var appAlert: AppAlert?
 
     private var favoritesManager: FavoritesManagerProtocol?
 
@@ -30,7 +31,10 @@ final class FavoritesViewModel: ObservableObject {
             favoriteMovies = favorites.map { $0.toMovie() }
             isLoading = false
         } catch {
-            print("Error loading favorites: \(error)")
+            appAlert = .info(title: error.localizedDescription,
+                             message: nil,
+                             dismissTitle: "OK",
+                             dismissAction: {})
             isLoading = false
         }
     }

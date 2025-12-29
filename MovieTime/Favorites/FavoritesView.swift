@@ -35,6 +35,7 @@ struct FavoritesView: View {
 
             contentView
         }
+        .appAlert(error: $viewModel.appAlert)
         .navigationTitle("Favorites")
         .navigationBarTitleDisplayMode(.large)
         .navigationDestination(for: Movie.self) { movie in

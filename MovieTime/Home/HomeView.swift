@@ -48,6 +48,7 @@ struct HomeView: View {
                 await viewModel.loadTrendingMovies()
             }
         }
+        .appAlert(error: $viewModel.appAlert)
     }
 
     var gridView: some View {

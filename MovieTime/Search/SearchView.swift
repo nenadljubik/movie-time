@@ -58,6 +58,7 @@ struct SearchView: View {
             }
             .padding()
         }
+        .appAlert(error: $viewModel.appAlert)
         .navigationDestination(for: SearchResultItem.self) { item in
             switch item {
             case .movie(let movie):
